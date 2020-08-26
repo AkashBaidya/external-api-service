@@ -1,6 +1,11 @@
 # external-api-service
 
+
+# install rest framework
 pip install djangorestframework_simplejwt
+
+
+# install httpie
 pip install httpie
 
 #link help
