@@ -19,7 +19,7 @@ from rest_framework.permissions import IsAuthenticated
 
 def dashboard_view(request,string):
     permission_classes = (IsAuthenticated, )
-    print(request.POST)
+    #print(request.POST)
 
 
 
@@ -48,7 +48,7 @@ def dashboard_view(request,string):
     # url = "http://192.168.107.11/account/"+string
     # print(url)
 
-    url = "http://192.168.107.11/auth"
+    url = "http://192.168.107.11:8585/auth"
     headers = {'content-type': 'application/json'}
 
     body={
@@ -57,7 +57,7 @@ def dashboard_view(request,string):
 	}
     r=requests.post(url, data=json.dumps(body), headers=headers)
     decoded_hand = json.loads(r.text)
-    print(decoded_hand['access_token'])
+    #print(decoded_hand['access_token'])
 
 
     #
@@ -67,10 +67,10 @@ def dashboard_view(request,string):
     print(headers_final)
     # #
     # print(headers_final)
-    url = "http://192.168.107.11/account/"+string
+    url = "http://192.168.107.11:8585/account/"+string
     r_final=requests.get(url,headers=headers_final)
-    print(requests.get(url,headers=headers_final))
-    print(url)
+    #print(requests.get(url,headers=headers_final))
+    #print(url)
 
     # r=requests.post(url, data=json.dumps(data), headers=headers)
     # r=requests.get(url, headers=headers)
