@@ -28,7 +28,7 @@ def dashboard_view(request,string):
 		'username' : 'exapiuser1',
 		'password' : 'exAPI@user1'
 	}
-    r=requests.post(url, data=json.dumps(body), headers=headers)
+    r=requests.post(url, data=json.dumps(body), headers=headers,verify=False)
     decoded_hand = json.loads(r.text)
     #print(decoded_hand['access_token'])
 
@@ -39,6 +39,6 @@ def dashboard_view(request,string):
     }
     
     url = "https://192.168.107.11:8585/account/"+string
-    r_final=requests.get(url,headers=headers_final)
+    r_final=requests.get(url,headers=headers_final,verify=False)
     
     return HttpResponse(r_final.text,content_type='application/json')
