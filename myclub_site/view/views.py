@@ -48,7 +48,7 @@ def dashboard_view(request,string):
     # url = "http://192.168.107.11/account/"+string
     # print(url)
 
-    url = "http://192.168.107.11:8585/auth"
+    url = "https://192.168.107.11:8585/auth"
     headers = {'content-type': 'application/json'}
 
     body={
@@ -67,7 +67,7 @@ def dashboard_view(request,string):
     print(headers_final)
     # #
     # print(headers_final)
-    url = "http://192.168.107.11:8585/account/"+string
+    url = "https://192.168.107.11:8585/account/"+string
     r_final=requests.get(url,headers=headers_final)
     #print(requests.get(url,headers=headers_final))
     #print(url)
