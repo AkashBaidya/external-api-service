@@ -21,7 +21,7 @@ def dashboard_view(request,string):
     permission_classes = (IsAuthenticated, )
     
 
-    url = "https://192.168.107.11:8585/auth"
+    url = "https://sisapi.singerbd.net:8585/auth"
     headers = {'content-type': 'application/json'}
 
     body={
@@ -38,7 +38,7 @@ def dashboard_view(request,string):
     'authorization': 'JWT '+decoded_hand['access_token']
     }
     
-    url = "https://192.168.107.11:8585/account/"+string
+    url = "https://sisapi.singerbd.net:8585/account/"+string
     r_final=requests.get(url,headers=headers_final,verify=False)
     
     return HttpResponse(r_final.text,content_type='application/json')
