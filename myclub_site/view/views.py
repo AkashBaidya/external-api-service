@@ -17,28 +17,34 @@ from rest_framework.permissions import IsAuthenticated
 # @permission_classes((IsAuthenticated, ))
 # permission_classes = [IsAuthenticated, ]
 
-def dashboard_view(request,string):
-    permission_classes = (IsAuthenticated, )
-    
+class HelloView(APIView):
+    permission_classes = (IsAuthenticated,)
 
-    url = "https://sisapi.singerbd.net:8585/auth"
-    headers = {'content-type': 'application/json'}
+    def get(self, request,string):
+        url = "https://sisapi.singerbd.net:8585/auth"
+        headers = {'content-type': 'application/json'}
 
-    body={
+        body={
 		'username' : 'exapiuser1',
 		'password' : 'exAPI@user1'
-	}
-    r=requests.post(url, data=json.dumps(body), headers=headers,verify=False)
-    decoded_hand = json.loads(r.text)
-    #print(decoded_hand['access_token'])
+             }
+        r=requests.post(url, data=json.dumps(body), headers=headers,verify=False)
+        decoded_hand = json.loads(r.text)
+        #print(decoded_hand['access_token'])
 
 
     
-    headers_final={
-    'authorization': 'JWT '+decoded_hand['access_token']
-    }
+        headers_final={
+                        'authorization': 'JWT '+decoded_hand['access_token']
+                      }
     
-    url = "https://sisapi.singerbd.net:8585/account/"+string
-    r_final=requests.get(url,headers=headers_final,verify=False)
+        url = "https://sisapi.singerbd.net:8585/account/"+string
+        r_final=requests.get(url,headers=headers_final,verify=False)
     
-    return HttpResponse(r_final.text,content_type='application/json')
+        return HttpResponse(r_final.text,content_type='application/json')
+
+    
+
+
+
+    

@@ -30,7 +30,7 @@ urlpatterns = [
 
     path('api/token/', jwt_views.TokenObtainPairView.as_view(), name ='token_obtain_pair'),
     # path('api/token/refresh/', jwt_views.TokenRefreshView.as_view(),name ='token_refresh'),
-    url(r'^accounts/(?P<string>[\w\-]+)/$',dashboard_view, name="dasahboard_view"),
+    url(r'^accounts/(?P<string>[\w\-]+)/$',views.HelloView.as_view(), name='hello'),
     # url(r'^auth',dashboard_view, name="dasahboard_view"),
     # url(r'^accounts/(?P<string>[\w\-]+)/$',final_view, name="final_view"),
     path('admin/', admin.site.urls),
