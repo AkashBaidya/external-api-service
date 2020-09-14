@@ -28,7 +28,7 @@ class HelloView(APIView):
 		'username' : 'exapiuser1',
 		'password' : 'exAPI@user1'
              }
-        r=requests.post(url, data=json.dumps(body), headers=headers,verify=False)
+        r=requests.post(url, data=json.dumps(body), headers=headers)
         decoded_hand = json.loads(r.text)
         #print(decoded_hand['access_token'])
 
@@ -39,7 +39,7 @@ class HelloView(APIView):
                       }
     
         url = "https://sisapi.singerbd.net:8585/account/"+string
-        r_final=requests.get(url,headers=headers_final,verify=False)
+        r_final=requests.get(url,headers=headers_final)
     
         return HttpResponse(r_final.text,content_type='application/json')
 
